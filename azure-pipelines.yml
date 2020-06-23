@@ -3,13 +3,13 @@ pool:
 trigger:
   - master
 steps:
-  - task: Npm@1
+  - task: Npm@0
     inputs:
       command: 'custom'
       customcommand: 'install --production'
   - script: 'npm test'
     displayName: 'Run unit tests'
-    continueOnError: true
+    continueOnError: 'true'
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
     condition: succeededOrFailed()
